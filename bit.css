@@ -1,0 +1,55 @@
+
+.game{
+margin-top: 00px;
+background-image: url("ocean.png");
+background-size: cover;
+background-repeat: repeat-x;
+font-family:'Pacifico', cursive;
+text-align: center;
+font-size: 72px;
+color: darkblue;
+height: 500px;
+
+}
+.platform{
+    position: absolute;
+    margin-top: 435px;
+    margin-bottom: 15px;
+    width: 250px;
+    animation-name: horizontal;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.spaceship{
+    position: absolute;
+    width: 100px;
+   margin-top: -100px;
+    animation-name: vertical;
+    animation-duration: 15s;
+    animation-iteration-count: 1;
+}
+.ocean{
+    position: absolute;
+    width: 980px;
+    left: 0px;
+    
+    margin-top: 450px;
+}
+
+@keyframes horizontal{
+    from{
+        left:100px;
+    }to{
+        left: 700px;
+    }
+}
+
+@keyframes vertical{
+    from{
+       top: 2600px
+    }to{
+        top:3160px;
+    }
+}
