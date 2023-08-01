@@ -1,1 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script src="collision.js">
+        collision = function(bound, compare){
+    var boundArray = bound;
+    var compareArray = compare;
 
+    if(compareArray.length){
+        
+        for(i=0; i<boundArray.length; i++){
+            boundOffset = $(boundArray[i]).offset();
+            boundOffset.right = boundOffset.left + $(boundArray[i]).width();
+            boundOffset.bottom = boundOffset.top + $(boundArray[i]).height();
+            
+            for(j=0; j<compareArray.length; j++){
+                comparePosition = $(compareArray[j]).offset();
+                comparePosition.right = comparePosition.left + $(compareArray[i]).width();
+                comparePosition.bottom = comparePosition.top + $(compareArray[i]).height();
+              
+                if(comparePosition.bottom > boundOffset.top &&
+                   comparePosition.top < boundOffset.bottom){
+                    if(comparePosition.right > boundOffset.left &&
+                        comparePosition.left < boundOffset.left){
+                        return boundArray[i];                    
+                    }
+                }
+            }
+        }
+    }
+}
+    </script>
+    <title>Document</title>
+    <style>
+        *{
+
+            margin: 0;
+            padding: 0;
+        }
+        
+        .section1{
+            width: 100%;
+            height: 450px;
+            background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+        }
+        .img1{
+            width: 100%;
+            margin-left: 10px;
+            display: flex;
+            margin-top: 80px;
+            
+        }
+            
+        
+        .img1 img{
+            height: 400px;
+            width: 60%;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .nav{
+            
+            height: 50px;
+            background-color: green;
+            background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+            
+            width: 1000px;
+            position: absolute;
+        }
+        #nav-head{
+            
+           font-size: 18px;
+           color: green;
+           padding-top: 10px;
+           padding-left: 80px;
+        }
+        .card{
+            margin-left: 10px;
+            height: 400px;
+            background-color: #30D2BE;
+        }
+        .card img{
+            width: 360px;
+            height: 500px;
+        }
+        #climate{
+            width: 100%;
+            height: 400px;
+            display: flex;
+            background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+        }
+        .climateimg{
+            width: 50%;
+            height: 490px;
+           
+        }
+        .climateimg img{
+            width: 120%;
+            height: 360px;
+            margin-left: 10px;
+            margin-top: 10px;
+            
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .climatetext{
+            margin-left: 60px;
+            margin-top: 5px;
+            height: 360px;
+            padding-right: 10px;
+        }
+        .climatetext p{
+            font-size: 10px;
+            color: navy;
+            text-align: justify;
+  text-justify: inter-word;
+
+        }
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+* {
+box-sizing: border-box;
+}
+.quiz-container {
+    background-color: #30D2BE;
+
+box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
+width: 615px;
+max-width: 95vw;
+overflow: hidden;
+height: 700px;
+}
+.quiz-header {
+padding: 2rem;
+}
+h3 {
+padding: 1rem;
+text-align: center;
+margin: 0;
+}
+ul {
+list-style-type: none;
+padding: 0;
+}
+ul li {
+font-size: 1.1rem;
+margin: 1rem 0;
+margin-left: -10px;
+
+}
+ul li label {
+cursor: pointer;
+color: green;
+justify-content: center;
+align-items: center;
+padding-left: 5px;
+text-align: justify;
+}
+button {
+background-color: rgb(12,109,253);
+color: #fff;
+border: none;
+display: block;
+width: 90%;
+cursor: pointer;
+font-size: 1.1rem;
+font-family: inherit;
+padding: 1.3rem;
+margin-left: 30px;
+border-radius: 10px;
+
+}
+button:hover {
+background-color: rgb(53,159,175);
+}
+button:focus {
+outline: none;
+background-color: rgb(53,159,175);
+}
+.reward{
+    display: flex;
+}
+.correctans{
+    width: 365px;
+    background-color: rgb(47,210,190);
+    
+}
+.ans{
+    width: 345px;
+    height: 680px;
+    margin: 10px;
+    background-color: #fff;
+    text-justify: auto;
+    border: 0.5px solid black;
+   
+}
+.ans p{
+    font-size: 12px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: justify;
+  text-justify: inter-word;
+}
+.ansimg img{
+    width: 300px;
+    height: 250px;
+    margin-left: 23px;
+    
+    
+}
+input[type='radio'] {
+        
+       
+    box-shadow: 0 0 0 2px rgb(47,210,190);
+    }
+.score{
+    width: 400px;
+    height: 150px;
+    background-color: rgb(53,159,175);
+    margin-left: 105px;
+    margin-top: 30px;
+    border-inline: 1px solid rgb(47,210,190);
+    
+}
+#scoreh3{
+    padding-top: 50px;
+}
+.video{
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    
+}
+.video img{
+    width: 500px;
+    height: 400px;
+}
+.card3{
+        background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+        height: 800px;
+        margin-left: -2px;
+       }
+       #pic{
+        width: 900px;
+        margin-top: 20px;
+        margin-left: 20px;
+       }
+       #info{
+        text-align: justify;
+  text-justify: inter-word;
+  font-size: 11px;
+  padding-left: 20px;
+  padding-right: 21px;
+
+       }
+       .card-text{
+        padding-left: 20px;
+       }
+       .six{
+        width: 100%;
+        height: 1065px;
+        background-color: black;
+        margin-top: -10px;
+       }
+       .easyways1{
+        display: flex;
+       }
+       .way1{
+        width: 33%;
+        height: 500px;
+        background-color: rgb(47,210,190);
+        margin-left: 5px;
+        margin-top: 30px;
+       }
+       .way2{
+        width: 33%;
+        height: 500px;
+        background-color: rgb(47,210,190);
+        margin-left: 5px;
+        margin-top: 30px;
+       }
+       .way3{
+        width: 33%;
+        height: 500px;
+        background-color: rgb(47,210,190);
+        margin-left: 5px;
+        margin-top: 30px;
+       }
+       .way1 img{
+        width: 300px;
+        height: 250px;
+        margin-left: 12px;
+        border-radius: 5px;
+       }
+       .way2 img{
+        width: 300px;
+        height: 250px;
+        margin-left: 10px;
+        border-radius: 5px;
+       }
+       .way3 img{
+        width: 300px;
+        height: 250px;
+        margin-left: 12px;
+        border-radius: 5px;
+       }
+       .way1 p{
+        font-size: 10px;
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 11px;
+        text-align: justify;
+  text-justify: inter-word;
+       }
+       .way2 p{
+        font-size: 10px;
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 11px;
+        text-align: justify;
+  text-justify: inter-word;
+       }
+       .way3 p{
+        font-size: 10px;
+        padding-top: 8px;
+        padding-left: 12px;
+        padding-right: 11px;
+        text-align: justify;
+  text-justify: inter-word;
+       }
+       .easyways2{
+        display: flex;
+        margin-top: -20px;
+       }
+       .experiments{
+        width: 100%;
+        height: 400px;
+        background-color: rgb(47,210,190);
+       }
+       .exp1{
+       display: flex;
+       background-color: rgb(47,210,190);
+       
+       margin-left: 5px;
+       }
+       .exp1 img{
+        margin-top: 40px;
+        padding-top: 10px;
+        padding-bottom: 20px;
+        width: 400px;
+        height: 300px;
+        margin-left: 20px;
+        border-radius: 5px;
+       }
+       #spill{
+        padding-top: 50px;
+       }
+       .exp1 p{
+        text-align: justify;
+        text-justify: inter-word;
+        font-size: 11px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 20px;
+       }
+       .exp1 ul {
+
+       }
+       .exp1 ul li{
+        font-size: 11px;
+       }
+       @import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+
+
+.section1 {
+  min-height: 100vh;
+  display: flex;
+}
+.section2{
+    
+background-size: cover;
+background-repeat: repeat-x;
+    background-image: url("https://www.storyberries.com/wp-content/uploads/2022/08/Bedtime-stories-The-Neighbourhood-Sofa-by-Jade-Maitre-short-stories-for-kids-cover-.jpg");
+  margin-top: 0px;
+}
+.section1:nth-child(1) {
+  color: #e0ffff;
+}
+.section1:nth-child(2) {
+  color: #42455a;
+  background: #e0ffff;
+}
+.section1:nth-child(3) {
+  color: #e0ffff;
+}
+.section1:nth-child(4) {
+  color: #42455a;
+  background: #e0ffff;
+}
+.section1 .container {
+  margin: 50px;
+  
+}
+
+
+.section1 .text-container {
+  display: flex;
+  
+}
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+.active.fade-bottom {
+  animation: fade-bottom 1s ease-in;
+}
+.active.fade-left {
+  animation: fade-left 1s ease-in;
+}
+.active.fade-right {
+  animation: fade-right 1s ease-in;
+}
+@keyframes fade-bottom {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.text-container img{
+  width: 460px;
+  
+}
+.story{
+    margin-left: -40px;
+    padding-right: 30px;
+}
+.story img{
+    padding-left: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="section1">
+        <div class="nav">
+      <h2 id="nav-head">
+        Learn About the Environment and Sustainable Living Practices: A Guide for Kids
+      </h2>
+        </div>
+        <div class="img1">
+           <img src="https://images.theconversation.com/files/464253/original/file-20220519-25-fo65q0.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&fit=clip" alt="">
+           <div class=" card" style="width: 22.6rem;">
+            <img class="card-img-top" src="https://www.nrdc.org/sites/default/files/styles/large_16x9_100/public/personalaction-kidsclimatechange-2400x1600.jpg.jpg?itok=pA4kN71w" alt="Card image cap">
+            <div class="card-body">
+              
+              <p class="card-text">Introducing the Concepts to Young Children (Ages 0–6)</p>
+              <a href="#climate" class="btn btn-primary">Learn about climate change</a>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+    <div id="climate">
+<div class="climateimg">
+    <img src="https://helios-i.mashable.com/imagery/articles/01NDANTdTYDVO6j7kSDeKUy/hero-image.fill.size_1248x702.v1623384884.png" alt="">
+</div>
+<div class="climatetext">
+
+           <div class=" card climatetext" style="width: 22.6rem;">
+   
+            <div class="card-body">
+              
+              <p class="card-text">Climate change is a big problem that happens when the Earth's temperature gets warmer because of things that people do. This can cause big changes in weather patterns, such as hotter summers, stronger storms, and longer droughts.
+
+                One of the main reasons why the Earth is getting warmer is because people are using a lot of energy from burning fossil fuels like coal, oil, and gas. This energy is used to power things like cars, homes, and factories. But when we burn these fuels, it releases a gas called carbon dioxide (CO2) into the air. This gas traps heat from the sun, causing the Earth's temperature to rise over time.
+                
+                Another thing that causes climate change is deforestation, which means cutting down trees. Trees help to absorb CO2 from the air, so when we cut them down, there are fewer trees to take in that gas.
+                
+                Climate change can have a big impact on the world around us. It can cause sea levels to rise, which can lead to flooding and damage to coastal areas. It can also make it harder for animals and plants to survive, and can cause problems with agriculture and food production.
+                
+                 We can use energy from renewable sources like wind and solar power, plant more trees, and reduce our use of fossil fuels by walking or biking instead of driving, and using less electricity at home.
+                
+               </p>
+              
+            </div>
+          </div>
+</div>
+    </div>
+    <div class="reward">
+    <div class="quiz-container" id="quiz">
+        <div class="quiz-header">
+        <h3 id="question">Question is loading...</h3>
+        <img id="img" src="" alt="">
+        <ul>
+        <li>
+        <input type="radio" name="answer" id="a" class="answer" />
+        <label for="a" id="a_text">Answer...</label>
+        </li>
+        <li>
+        <input type="radio" name="answer" id="b" class="answer" />
+        <label for="b" id="b_text">Answer...</label>
+        </li>
+        <li>
+        <input type="radio" name="answer" id="c" class="answer" />
+        <label for="c" id="c_text">Answer...</label>
+        </li>
+        <li>
+        <input type="radio" name="answer" id="d" class="answer" />
+        <label for="d" id="d_text">Answer...</label>
+        </li>
+        </ul>
+        </div>
+        <button id="submit">Submit</button>
+        <div class="score">
+            <h3 id="scoreh3">Currently Your score is 0</h3>
+        </div>
+        </div>
+        <div class="correctans">
+              <div class="ans mt-2 mx-1 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<p class="font-normal text-gray-700 dark:text-gray-400" id="crtans"></p><br>
+<div class="ansimg">
+    <img class="w-96 h-80 rounded-t-lg" id="ansimg" src="https://www.shutterstock.com/shutterstock/photos/504803248/display_1500/stock-vector-kids-playing-quiz-game-answering-questions-standing-at-the-stand-with-buttons-girl-pressed-the-504803248.jpg" alt="">
+                </div>
+              </div>
+              
+        </div>
+    </div>
+    <div class="video">
+        <img src="https://www.shutterstock.com/image-vector/set-nine-isolated-ecology-air-260nw-2103255089.jpg" alt="">
+<img src="https://previews.123rf.com/images/632imagine/632imagine1601/632imagine160100014/51832795-the-children-are-protecting-the-world-environment-pollutions-on-the-global-infographic-elements.jpg" alt="">
+    </div>
+   
+      <div class="nasaapi">
+        <div id="rover" class="card card3" style="width: 100%;">
+            <div class="card-body">
+               <b><h3 class="card-title">Nasa Astronomy picture of the day (Change everyday)</h3></b> 
+              <b><p id="title" class="card-text"></p></b> 
+              <b><p id="date" class="card-text">Date: </p></b>
+                
+              <img id="pic" class="card-img-top" src="" alt="Card image cap">
+              <p id="info" class="text-xl text-gray-900 card-text text-justify pl-1 pr-2 mt-2 mb-2"></p>
+              </div>
+           
+          </div>
+          <div>
+      </div>  
+      <section class="game">
+        <img class="spaceship" src="spaceship.png">
+        <img class="platform" src="platform.png">
+        <img class="ocean" src="wave.png">
+        <audio src="engine.mp3" autoplay></audio>
+        <script>
+            function checkKey(event){
+                var keyPressed = event.originalEvent.code;
+                if(keyPressed == 'ArrowRight'){
+                    var rightCSS = {
+                        'left': '+=20px'
+                    }
+                    $(".spaceship").css(rightCSS);
+                }
+                if (keyPressed == 'ArrowLeft'){
+                    var leftCSS = {
+                        'left': '-=20px'
+                    }
+                    $(".spaceship").css(leftCSS);
+                }
+            }
+
+            $(document).keydown(checkKey);
+
+            function platformCollision(){
+                var collided = collision($('.spaceship'), $('.platform'));
+                if(collided){
+                    $('section').html("Spaceship landed succesfully");
+                }
+            }
+            
+            setInterval(platformCollision, 50);
+            
+            function waterCollision(){
+                var collided = collision($('.spaceship'), $('.water'));
+                if(collided){
+                    $('section').html("Spaceship has crashed");
+                }
+            }
+            
+            setInterval(waterCollision, 50);
+        </script>
+      </section>
+      <div class="six">
+      <div class="easyways1">
+        <div class="way1">
+      <h3>Reduce, Reuse, Recycle!</h3>
+      <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/recycling.jpg?w=1040" alt="">
+      <p>According to the USEPA, more than 69 million tons of material was recycled back in 2018. By being mindful about the waste you create, you can add to this number. The next time you’re throwing away paper and plastic items such as cartons, cans, and cardboard, put them in your recycling bin instead of the trash. This way, the materials can be processed and reused rather than thrown into landfills. You might also consider using reusable water bottles and containers instead of plastic ones, or bringing your own shopping bag when visiting the store.</p>
+        </div>
+        <div class="way2">
+            <h3>Conserve Electricity</h3>
+            <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/electricity.jpg" alt="">
+            <p>Did you know that excessive electricity use can result in the emission of harmful pollutants and greenhouse gases? It can also release pollution into water and produce hazardous waste, all of which are dangerous to our ecosystems. You can help prevent this by reducing the electricity used in your home. Next time you leave a room, turn the lights off. Unplugging your electronic devices when you’re not charging them can make a difference, as well as turning off the TV when you’re no longer watching it. Visit the EPA website for more information on the harmful environmental effects of electricity.</p>
+        </div>
+        <div class="way3">
+            <h3> Pick Up Litter</h3>
+            <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/trash.jpg" alt="">
+            <p>Picking up and throwing away litter is a simple way to reduce waste in the environment. Not only does it tidy up the planet and make it look cleaner, but it also reduces the risk of animals getting hurt from accidentally swallowing dangerous items. Dispose of all trash in a nearby trash can or dumpster. You can make this a fun experience for kids, challenging them to find five, ten, twenty, etc. pieces of trash to pick up—just make sure to wear gloves, wash your hands, and be mindful of sanitation.</p>
+        </div>
+      </div>
+      <div class="easyways2">
+        <div class="way1">
+      <h3>Donate Outgrown Toys and Clothes to Goodwill</h3>
+      <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/1eeb9c85-a40e-4842-bdbb-3dac18764434-1.png" alt="">
+      <p>Has your child outgrown some of their toys? Do they have shirts that don’t fit right anymore?  Just because you no longer need something does not mean it’s useless! If the items are in acceptable condition, donate them to your local Goodwill or other charities instead of throwing them away. This way, they will find a new home with someone else who will make good use of them. After all, one man’s trash is another man’s treasure!</p>
+        </div>
+        <div class="way2">
+            <h3>Plant a Garden </h3>
+            <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/10737d02-9c3e-4209-a0d3-f0db14f5955c.png?w=1026" alt="">
+            <p>Want to grow your own plants? Do you like the beautiful smell of flowers in springtime or the taste of homegrown vegetables? Why not grow your very own garden! Not only will you get to enjoy these wonderful sensory benefits, but your plants will help produce oxygen through photosynthesis. Make sure to also use natural products and fertilizers when gardening, as they are a safer alternative to pesticides and other chemicals.  </p>
+        </div>
+        <div class="way3">
+            <h3>Get Composting</h3>
+            <img src="https://bostonchildrensmuseum.files.wordpress.com/2021/04/c2a9joel_haskell_20140824bcm0264.jpg?w=1122" alt="">
+            <p>Composting is a great way to improve soil health! It not only helps the soil retain its moisture, but also serves as fertilizer, gives it nutrients, and prevents erosion and disease. You can create your own compost with materials around your home such as leaves, twigs, grass clippings, and leftover fruit and vegetable scraps from your kitchen. 
+
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="experiments">
+        <div class="exp1">
+          <div>
+            <img src="https://www.science-sparks.com/wp-content/uploads/2020/02/Oil-Clean-Up-2048x1562.jpeg" alt="">
+          </div>
+          <div>
+            <h3 id="spill">CLEAN IT UP – OIL SPILL EXPERIMENT
+             </h3>
+            <p>
+                An oil spill is when sea water is contaminated with oil. This can be an accident or human error. Oil spills can be massively damaging to marine wildlife and also humans if the oil gets into the food chain. This hand-on oil spill science experiment is not only great for helping children visualise the effects of an oil spill, but also demonstrates how water and oil don’t mix and why oil floats on water.
+            </p>
+           
+          </div>
+        </div>
+    </div>
+          <div class="section1">
+            <div class="container reveal fade-bottom">
+              
+              <div class="text-container story">
+                
+               <img src="st1.jpeg" alt=""> 
+               <img src="stry2.jpeg" alt=""> 
+              </div>
+            </div>
+        </div>
+          
+          <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+             <img src="stry3.jpeg" alt="">
+             <img src="stry4.jpeg" alt="">
+                  
+                </div>
+            </div>
+        </div>
+          
+          <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry5.jpeg" alt="">
+                <img src="stry6.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry7.jpeg" alt="">
+                <img src="stry8.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry9.jpeg" alt="">
+                <img src="stry10.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry11.jpeg" alt="">
+                <img src="stry12.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry13.jpeg" alt="">
+                <img src="stry14.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry15.jpeg" alt="">
+                <img src="stry16.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry17.jpeg" alt="">
+                <img src="stry18.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry19.jpeg" alt="">
+                <img src="stry20.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry21.jpeg" alt="">
+                <img src="stry22.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry23.jpeg" alt="">
+                <img src="stry24.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry25.jpeg" alt="">
+                <img src="str26.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry27.jpeg" alt="">
+                <img src="stry28.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry29.jpeg" alt="">
+                <img src="stry30.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry31.jpeg" alt="">
+                <img src="stry32.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry33.jpeg" alt="">
+                <img src="stry34.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry35.jpeg" alt="">
+                <img src="stry36.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-left">
+              
+              <div class="text-container story">
+                <img src="stry37.jpeg" alt="">
+                <img src="stry38.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+        <div class="section1">
+            <div class="container reveal fade-right">
+              
+              <div class="text-container story">
+                <img src="stry39.jpeg" alt="">
+                <img src="stry40.jpeg" alt="">
+              </div>
+            </div>
+        </div>
+    <script>
+        function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
+
+    </script>
+<script>
+     const quizData = [
+{
+question  : "Which of the following are Greenhouse Gases (GHG) that contributes to Global Warming?",
+a: "Carbon Dioxide",
+b: "Methane",
+c: "Nitrous Oxide",
+d: "All of the above",
+correct: "d",
+},
+{
+question: "Which of the following activities can reduce the amount of greenhouse gases in the atmosphere?",
+a: "Walking instead of using the car",
+b: "Avoiding Food waste",
+c: "Both A & B",
+d: "None of the Above",
+correct: "c",
+},
+{
+question: "What is the Greenhouse effect?",
+a: "The process of plants growing in a greenhouse",
+b: " The trapping of heat in the Earth's atmosphere by greenhouse gases",
+c: " The way that sunlight is reflected off the Earth's surface",
+d: "The way that heat is transferred from the Earth's core to the surface",
+correct: "b",
+},
+{
+question: "What is renewable energy?",
+a: "Energy that comes from non-renewable sources like oil and coal",
+b: "Energy that comes from natural resources like wind and sunlight",
+c: "Energy that is made from plastic and other synthetic materials",
+d: "Energy that is stored in batteries and other electronic devices",
+correct: "b",
+},
+{
+question: "What are the consequences of climate change?",
+a: " More extreme weather events like floods and droughts",
+b: "More comfortable temperatures and longer growing seasons",
+c: "Cleaner air and water",
+d: "More wildlife and biodiversity",
+correct: "b",
+},
+];
+let correctarray = []; 
+correctarray.push("The following are greenhouse gases (GHG) that contribute to global warming: Carbon dioxide (CO2),  Methane (CH4),  Nitrous oxide (N2O),  Chlorofluorocarbons (CFCs),  Hydrofluorocarbons (HFCs),  Perfluorocarbons (PFCs),  Sulfur hexafluoride (SF6),  These gases trap heat in the Earth's atmosphere and contribute to the greenhouse effect, which is causing global temperatures to rise and leading to climate change.");
+correctarray.push("Using renewable energy sources, such as solar, wind, hydro, or geothermal power, instead of fossil fuels to generate electricity and power transportation.Improving energy efficiency in buildings, appliances, and transportation.Planting trees and other vegetation, which absorb carbon dioxide from the atmosphere during photosynthesis.Using sustainable agricultural practices, such as reducing fertilizer use and improving soil health, which can reduce emissions of nitrous oxide.Reducing meat consumption, particularly beef and lamb, which have a high carbon footprint due to the emissions associated with livestock production.Implementing policies and regulations that limit greenhouse gas emissions from industries, such as power generation, transportation, and manufacturing.")
+correctarray.push("The greenhouse effect is a natural process that occurs in the Earth's atmosphere, which helps to regulate the planet's temperature. It is caused by certain gases in the atmosphere, known as greenhouse gases, which trap heat and prevent it from escaping into space. The most important of these greenhouse gases is carbon dioxide, but others include water vapor, methane, and nitrous oxide.")
+correctarray.push("Renewable energy refers to energy that is derived from sources that can be replenished or regenerated naturally, such as wind, solar, hydro, geothermal, and biomass. Unlike fossil fuels, which are finite and non-renewable resources, renewable energy sources are virtually limitless and can be harnessed without depleting the Earth's natural resources.")
+correctarray.push("The impacts of climate change on different sectors of society are interrelated. Drought can harm food production and human health. Flooding can lead to disease spread and damages to ecosystems and infrastructure. Human health issues can increase mortality, impact food availability, and limit worker productivity. Climate change impacts are seen throughout every aspect of the world we live in. However, climate change impacts are uneven across the country and the world — even within a single community, climate change impacts can differ between neighborhoods or individuals. Long-standing socioeconomic inequities can make  underserved groups, who often have the highest exposure to hazards and the fewest resources to respond, more vulnerable. ")
+let imagearray = [];
+
+imagearray.push("https://www.epa.gov/sites/default/files/styles/medium/public/2016-05/global_emissions_gas_2015.png?itok=jhk0EcIN");
+imagearray.push("https://i.pinimg.com/474x/f0/8e/27/f08e27d7edd107c1ef9664d5b832f858.jpg")
+imagearray.push("https://cdn-cenii.nitrocdn.com/dxZQGVjeOyXblsYkcsxiHEoJOLKUvtcl/assets/images/optimized/rev-1f08c57/wp-content/uploads/2021/11/greenhouse-effects-by-natural-and-human-activities-1024x726.jpg")
+imagearray.push("https://polarpedia.eu/wp-content/uploads/2019/05/Renewableenergy.jpg")
+imagearray.push("https://www.globalgiving.org/learn/wp-content/uploads/2020/10/Causes-and-Effects-Climate-Change-Chart.png")
+const quiz = document.getElementById("quiz");
+const crtanss = document.getElementById("crtans");
+const imggans = document.getElementById("ansimg");
+const scoree = document.getElementById("scoreh3");
+const answerElements = document.querySelectorAll(".answer");
+const questionElement = document.getElementById("question");
+
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const submitButton = document.getElementById("submit");
+let currentQuiz = 0;
+let score = 0;
+let k = 0;
+const deselectAnswers = () => {
+answerElements.forEach((answer) => (answer.checked = false));
+};
+const getSelected = () => {
+let answer;
+answerElements.forEach((answerElement) => {
+if (answerElement.checked) answer = answerElement.id;
+});
+return answer;
+};
+const loadQuiz = () => {
+deselectAnswers();
+const currentQuizData = quizData[currentQuiz];
+questionElement.innerText = currentQuizData.question;
+
+a_text.innerText = currentQuizData.a;
+b_text.innerText = currentQuizData.b;
+c_text.innerText = currentQuizData.c;
+d_text.innerText = currentQuizData.d;
+};
+loadQuiz();
+submitButton.addEventListener("click", () => {
+    
+const answer = getSelected();
+
+if (answer) {
+if (answer === quizData[currentQuiz].correct)
+ 
+ score++;
+ scoree.innerHTML = "Currently Your Score is "+score;
+ crtanss.innerHTML = correctarray[currentQuiz];
+ imggans.src = imagearray[currentQuiz];
+currentQuiz++;
+k++;
+
+if (currentQuiz < quizData.length) loadQuiz();
+else {
+quiz.innerHTML = `
+<h2 style="margin-top: 50px" style="margin-left: 40px">You answered ${score}/${quizData.length} questions correctly</h2>
+<button style="margin-top: 50px" onclick="history.go(0)">Play Again</button>
+` // location.reload() won't work in CodePen for security reasons;
+}
+}
+});
+  </script>
+  <script>
+     var url = "https://api.nasa.gov/planetary/apod?api_key=";
+    var api_key = "vYkIkmx84QaFhIKzV7Kplm1GnWQi0Tgc055nh05Z";
+    
+    const fetchNasaData = async() => {
+        try{
+            const response = await fetch(`${url}${api_key}`)
+            const data = await response.json()
+            displayData(data)
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const displayData = data =>{
+        
+       document.getElementById("title").textContent = data.title
+       document.getElementById("date").textContent = "Date: "+data.date
+       document.getElementById("pic").src = data.hdurl
+       document.getElementById("info").textContent = data.explanation
+    }
+    fetchNasaData()
+  </script>
+</body>
+</html>
